@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Cowsay</string>
+    <string name="copyTxt">Copy</string>
+    <string name="starting_text">Hello</string>
+</resources>
