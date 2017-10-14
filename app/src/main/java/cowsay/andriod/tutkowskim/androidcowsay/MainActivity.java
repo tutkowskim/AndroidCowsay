@@ -11,8 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Main activity
+ */
 public class MainActivity extends AppCompatActivity {
-
+    /**
+     * Setup action listeners on create
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +53,11 @@ public class MainActivity extends AppCompatActivity {
             copyTextButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    String inputTextValue = inputText.getText().toString();
+                    String cowsay = Cowsay.say(inputTextValue);
+
                     ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                    clipboard.setPrimaryClip(ClipData.newPlainText(inputText.getText(), cowsay(inputText.getText().toString())));
+                    clipboard.setPrimaryClip(ClipData.newPlainText(inputTextValue, cowsay));
                 }
             });
         }
@@ -57,61 +66,16 @@ public class MainActivity extends AppCompatActivity {
         updateCowsayMessage(inputText, outputText);
     }
 
+    /**
+     * Update the outtext with the cowsay output containing the input text
+     * @param inputText Text for the cow to say
+     * @param outputText Text field to update
+     */
     private void updateCowsayMessage(EditText inputText, TextView outputText) {
         if (inputText != null && outputText != null) {
             String message = inputText.getText().toString();
-            String cowsayMessage = cowsay(message);
+            String cowsayMessage = Cowsay.say(message);
             outputText.setText(cowsayMessage);
         }
-    }
-
-    private String cowsay(String text) {
-        String cowsay = "";
-
-        // Determine quote line length
-        int longestLineLength = -1;
-        final String[] textLines = text.replace("\r", "").split("\n");
-        for (String line : textLines) {
-            int lineLength = line.length();
-            if (lineLength > longestLineLength) {
-                longestLineLength = lineLength;
-            }
-        }
-
-        // Draw top of bubble text
-        cowsay += " ";
-        for (int i = 0; i < longestLineLength; ++i) {
-            cowsay += '_';
-        }
-        cowsay += '\n';
-
-        // Draw Quote
-        for (String line : textLines) {
-            cowsay += "(";
-            cowsay += line;
-
-            int padding = longestLineLength - line.length();
-            for (int i = 0; i < padding; ++i) {
-                cowsay += " ";
-            }
-
-            cowsay += ")\n";
-        }
-
-        // Draw bottom of bubble
-        cowsay += " ";
-        for (int i = 0; i < longestLineLength; ++i) {
-            cowsay += '-';
-        }
-        cowsay += '\n';
-
-        // Draw cow
-        cowsay += "    \\   ^__^\n";
-        cowsay += "     \\  (oo)\\_______\n";
-        cowsay += "        (__)\\       )\\/\\\n";
-        cowsay += "            ||----w |\n";
-        cowsay += "            ||     ||\n";
-
-        return cowsay;
     }
 }
