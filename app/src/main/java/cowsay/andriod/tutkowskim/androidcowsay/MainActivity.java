@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the initial cowsay value
         updateCowsayMessage(inputText, outputText);
+
+        // Don't hide the cowsay text when the keyboard is visible
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     }
 
     /**
