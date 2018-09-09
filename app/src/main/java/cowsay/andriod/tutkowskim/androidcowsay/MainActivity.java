@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void shareAsText() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("image/jpg");
+        shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, cowsayMessage);
         startActivity(Intent.createChooser(shareIntent, "Share cowsay text using"));
     }
