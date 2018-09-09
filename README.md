@@ -1,5 +1,5 @@
 # AndroidCowsay
-A simple application to generate cowsay text and copy it. Enabling the user to send cowsay messages.
+This application generates cowsay messages and allows the user to share it in raw text format or as an image.
 
 <img src="../master/readmeImages/CowsayActivity.png?raw=true" height="480" width="270">
 
