@@ -2,4 +2,6 @@
     <string name="app_name">Cowsay</string>
     <string name="copyTxt">Copy</string>
     <string name="starting_text">Hello</string>
+    <string name="share_as_text">Share as Text</string>
+    <string name="share_as_image">Share as Image</string>
 </resources>
