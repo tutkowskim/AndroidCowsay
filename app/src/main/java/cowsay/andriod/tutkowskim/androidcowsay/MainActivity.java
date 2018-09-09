@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText inputText = findViewById(R.id.inputText);
         final TextView outputText = findViewById(R.id.outputText);
-        final Button copyTextButton = findViewById(R.id.copyTextButton);
 
         // Setup a listener to display the cowsay text
         if (inputText != null) {
@@ -60,20 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void afterTextChanged(Editable editable) {
                     updateCowsayMessage(inputText, outputText);
-                }
-            });
-        }
-
-        // Setup the copy text button
-        if (copyTextButton != null) {
-            copyTextButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String inputTextValue = inputText.getText().toString();
-                    String cowsay = Cowsay.say(inputTextValue);
-
-                    ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                    clipboard.setPrimaryClip(ClipData.newPlainText(inputTextValue, cowsayMessage));
                 }
             });
         }

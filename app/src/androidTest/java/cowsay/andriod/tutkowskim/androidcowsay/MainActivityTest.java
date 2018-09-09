@@ -56,28 +56,4 @@ public class MainActivityTest {
         onView(withId(R.id.outputText))
                 .check(matches(withText(expectedCowsayText)));
     }
-
-    @Test
-    public void copyCowsayText() {
-        final String textToEnter = "Clippy!";
-        final String expectedCowsayText = Cowsay.say(textToEnter);
-
-        // Close the soft-keyboard
-        onView(withId(R.id.inputText)).perform(closeSoftKeyboard());
-
-        // Change the text
-        onView(withId(R.id.inputText))
-                .perform(click())
-                .perform(replaceText(textToEnter));
-
-        // Click the copy button
-        onView(withId(R.id.copyTextButton))
-                .perform(click());
-
-        // Verify the clipboard
-        Context context = mainActivityActivityTestRule.getActivity();
-        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
-        ClipData clipData = clipboard.getPrimaryClip();
-        assertEquals(expectedCowsayText, clipData.getItemAt(0).getText());
-    }
 }
