@@ -3,7 +3,7 @@ This application generates cowsay messages and allows the user to share it in ra
 
 <img src="../master/readmeImages/CowsayActivity.png?raw=true" height="480" width="270">
 
-## Download it Now
+## Download it now
 https://play.google.com/store/apps/details?id=cowsay.andriod.tutkowskim.androidcowsay
 
 ## Icon
